@@ -3,5 +3,6 @@
 MCProtocolLib    [Included]
 MCAuthLib        [Included]
 Netty 4.1.0      [Included]
+BungeeCord API   [No Included]
 jcaptcha-2.0     [No Included]
 jcaptcha-1.0 API [No Included]
