@@ -1,0 +1,4 @@
+name: AnBotCore
+version: 0.1
+main: iroot.BungeePlugin
+author: iRoot Dev (COT)
