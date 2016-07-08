@@ -20,25 +20,25 @@ public class notify extends Command {
 			{
 				if (arg1[0].contains("banlist"))
 				{
-					sender.sendMessage("§c"+BungeePlugin.blackList);
+					sender.sendMessage("Â§c"+BungeePlugin.blackList);
 				}
 				if (arg1[0].contains("unban"))
 				{
 					if (arg1.length < 2)
 					{
-						sender.sendMessage("§c/ancore unban <IP>");
+						sender.sendMessage("Â§c/ancore unban <IP>");
 					}
 					else
 					{
 						BungeePlugin.blackList.remove(arg1[1]);
-						sender.sendMessage("§8[§fAn§bBot§8]: §fÓêàçàíûé IP óñïåøíî ğàçáàíåí!");
+						sender.sendMessage("Â§8[Â§fAnÂ§bBotÂ§8]: Â§fĞ£ĞºĞ°Ğ·Ğ°Ğ½Ñ‹Ğ¹ IP ÑƒÑĞ¿ĞµÑˆĞ½Ğ¾ Ñ€Ğ°Ğ·Ğ±Ğ»Ğ¾ĞºĞ¸Ñ€Ğ¾Ğ²Ğ°Ğ½!");
 					}
 				}
 				if (arg1[0].contains("guard"))
 				{
 					if (arg1.length < 2)
 					{
-						sender.sendMessage("§c/ancore guard <on/off/auto>");
+						sender.sendMessage("Â§c/ancore guard <on/off/auto>");
 					}
 					else
 					{
@@ -46,20 +46,20 @@ public class notify extends Command {
 						{
 							BungeePlugin.guard = true;
 							BungeePlugin.autoGuard = false;
-							sender.sendMessage("§8[§fAn§bBot§8]: §fÇàùèòà ïğèíóäèòåëüíî âêëş÷åíà!");
+							sender.sendMessage("Â§8[Â§fAnÂ§bBotÂ§8]: Â§fĞ—Ğ°Ñ‰Ğ¸Ñ‚Ğ° Ğ¿Ñ€Ğ¸Ğ½ÑƒĞ´Ğ¸Ñ‚ĞµĞ»ÑŒĞ½Ğ¾ Ğ²ĞºĞ»ÑÑ‡ĞµĞ½Ğ°!");
 							
 						}
 						if (arg1[1].equalsIgnoreCase("off"))
 						{
 							BungeePlugin.guard = false;
 							BungeePlugin.autoGuard = false;
-							sender.sendMessage("§8[§fAn§bBot§8]: §fÇàùèòà ïğèíóäèòåëüíî îòêëş÷åíà!");
+							sender.sendMessage("Â§8[Â§fAnÂ§bBotÂ§8]: Â§fĞ—Ğ°Ñ‰Ğ¸Ñ‚Ğ° Ğ¿Ñ€Ğ¸Ğ½ÑƒĞ´Ğ¸Ñ‚ĞµĞ»ÑŒĞ½Ğ¾ Ğ¾Ñ‚ĞºĞ»ÑÑ‡ĞµĞ½Ğ°!");
 						}
 						if (arg1[1].equalsIgnoreCase("auto"))
 						{
 							BungeePlugin.guard = false;
 							BungeePlugin.autoGuard = true;
-							sender.sendMessage("§8[§fAn§bBot§8]: §fÇàùèòà ğàáîòàåò â àâòîìàòè÷åñêîì ğåæèìå!");
+							sender.sendMessage("Â§8[Â§fAnÂ§bBotÂ§8]: Â§fĞ—Ğ°Ñ‰Ğ¸Ñ‚Ğ° Ñ€Ğ°Ğ±Ğ¾Ñ‚Ğ°ĞµÑ‚ Ğ² Ğ°Ğ²Ñ‚Ğ¾Ğ¼Ğ°Ñ‚Ğ¸Ñ‡ĞµÑĞºĞ¾Ğ¼ Ñ€ĞµĞ¶Ğ¸Ğ¼Ğµ!");
 						}
 					}
 				}
@@ -71,27 +71,27 @@ public class notify extends Command {
 				long allocatedMemory = runtime.totalMemory();
 				long freeMemory = runtime.freeMemory();
 				
-				sender.sendMessage("§f.......:::§8[ §bAnBot Information §8]§f:::.......");
-				sender.sendMessage("§fUsed memory: §b" + (((allocatedMemory / 1024)/1024)-((freeMemory / 1024)/1024)) + "§f MB");
-				sender.sendMessage("§fFree memory: §b" + (freeMemory / 1024)/1024 + "§f MB");
-				sender.sendMessage("§fAllocated memory: §b" + (allocatedMemory / 1024)/1024 + "§f MB");
-				sender.sendMessage("§fMax memory: §b" + (maxMemory / 1024)/1024 + "§f MB");
-				sender.sendMessage("§fTotal free memory: §b" + ((freeMemory + (maxMemory - allocatedMemory)) / 1024)/1024 + "§f MB");
+				sender.sendMessage("Â§f.......:::Â§8[ Â§bAnBot Information Â§8]Â§f:::.......");
+				sender.sendMessage("Â§fUsed memory: Â§b" + (((allocatedMemory / 1024)/1024)-((freeMemory / 1024)/1024)) + "Â§f MB");
+				sender.sendMessage("Â§fFree memory: Â§b" + (freeMemory / 1024)/1024 + "Â§f MB");
+				sender.sendMessage("Â§fAllocated memory: Â§b" + (allocatedMemory / 1024)/1024 + "Â§f MB");
+				sender.sendMessage("Â§fMax memory: Â§b" + (maxMemory / 1024)/1024 + "Â§f MB");
+				sender.sendMessage("Â§fTotal free memory: Â§b" + ((freeMemory + (maxMemory - allocatedMemory)) / 1024)/1024 + "Â§f MB");
 				sender.sendMessage(" ");
-				sender.sendMessage("§f.......:::§8[ §bAnCore Information §8]§f:::.......");
-				sender.sendMessage("§fJoin/Sec: §b" + BungeePlugin.connections);
-				sender.sendMessage("§fGuard Status: §b" + BungeePlugin.guard);
-				sender.sendMessage("§fAuto Guard: §b" + BungeePlugin.autoGuard);
-				sender.sendMessage("§fSensitive: §b" + BungeePlugin.sensitive);
-				sender.sendMessage("§fWhiteList: §b" + BungeePlugin.whiteList.size());
-				sender.sendMessage("§fBanned IP's: §b" + BungeePlugin.blackList.size());
+				sender.sendMessage("Â§f.......:::Â§8[ Â§bAnCore Information Â§8]Â§f:::.......");
+				sender.sendMessage("Â§fJoin/Sec: Â§b" + BungeePlugin.connections);
+				sender.sendMessage("Â§fGuard Status: Â§b" + BungeePlugin.guard);
+				sender.sendMessage("Â§fAuto Guard: Â§b" + BungeePlugin.autoGuard);
+				sender.sendMessage("Â§fSensitive: Â§b" + BungeePlugin.sensitive);
+				sender.sendMessage("Â§fWhiteList: Â§b" + BungeePlugin.whiteList.size());
+				sender.sendMessage("Â§fBanned IP's: Â§b" + BungeePlugin.blackList.size());
 				sender.sendMessage(" ");
-				sender.sendMessage("§bCommands: §f/ancore guard, /ancore unban, /ancore banlist");
+				sender.sendMessage("Â§bCommands: Â§f/ancore guard, /ancore unban, /ancore banlist");
 			}
 		}
 		else
 		{
-			sender.sendMessage("§8[§fAn§bBot§8]: §fÓ âàñ íåò ïğàâ äëÿ äîñòóïà ê äàííîé êîìàíäå!");
+			sender.sendMessage("Â§8[Â§fAnÂ§bBotÂ§8]: Â§fĞ£ Ğ²Ğ°Ñ Ğ½ĞµĞ´Ğ¾ÑÑ‚Ğ°Ñ‚Ğ¾Ñ‡Ğ½Ğ¾ Ğ¿Ñ€Ğ°Ğ².");
 		}
 	}
 
