@@ -36,13 +36,13 @@ public class BungeePlugin extends Plugin implements Listener
 	static int font_max = 40;
 	static boolean strong_captcha = false;
 	static String serverName = "game";
-	static String banMessage = "§cВаш IP заблокирован. Напишите §fvk.com/ВАШ_ВК §cдля разблокировки.";
+	static String banMessage = "В§cГ‚Г Гё IP Г§Г ГЎГ«Г®ГЄГЁГ°Г®ГўГ Г­. ГЌГ ГЇГЁГёГЁГІГҐ В§fvk.com/Г‚ГЂГ_Г‚ГЉ В§cГ¤Г«Гї Г°Г Г§ГЎГ«Г®ГЄГЁГ°Г®ГўГЄГЁ..";
 	HashMap<String, Integer> attempts = new HashMap<String, Integer>();
 	
 	@Override
 	public void onEnable()
 	{
-		Message("инициализация...");
+		Message("ГЁГ­ГЁГ¶ГЁГ Г«ГЁГ§Г Г¶ГЁГї...");
 		//Console filter
 		Filter filter = new LogFilter();
         BungeeCord.getInstance().getLogger().setFilter(filter);
@@ -63,13 +63,13 @@ public class BungeePlugin extends Plugin implements Listener
 				config.set("captcha_length", 3);
 				config.set("font_min", 20);
 				config.set("font_max", 40);
-				config.set("banMessage", "§cВаш IP заблокирован. Напишите §fvk.com/ВАШ_ВК §cдля разблокировки.");
+				config.set("banMessage", "В§cГ‚Г Гё IP Г§Г ГЎГ«Г®ГЄГЁГ°Г®ГўГ Г­. ГЌГ ГЇГЁГёГЁГІГҐ В§fvk.com/Г‚ГЂГ_Г‚ГЉ В§cГ¤Г«Гї Г°Г Г§ГЎГ«Г®ГЄГЁГ°Г®ГўГЄГЁ.");
 				ConfigurationProvider.getProvider(YamlConfiguration.class).save(config, new File(getDataFolder(), "config.yml"));
-				Message("§aконфиг успешно создан!");
+				Message("В§aГЄГ®Г­ГґГЁГЈ ГіГ±ГЇГҐГёГ­Г® Г±Г®Г§Г¤Г Г­!");
 			} 
 			catch (IOException e) 
 			{
-				Message("§4ошибка создания конфига!");
+				Message("В§4Г®ГёГЁГЎГЄГ  Г±Г®Г§Г¤Г Г­ГЁГї ГЄГ®Г­ГґГЁГЈГ !");
 			}
 		}
 		else
@@ -86,22 +86,22 @@ public class BungeePlugin extends Plugin implements Listener
 				font_max = config.getInt("font_max");
 				serverName = config.getString("serverName");
 				banMessage = config.getString("banMessage");
-				Message("конфиг успешно загружен!");
+				Message("ГЄГ®Г­ГґГЁГЈ ГіГ±ГЇГҐГёГ­Г® Г§Г ГЈГ°ГіГ¦ГҐГ­!");
 			} 
 			catch (IOException e) 
 			{
-				Message("§4ошибка загрузки конфига!");
+				Message("В§4Г®ГёГЁГЎГЄГ  Г§Г ГЈГ°ГіГ§ГЄГЁ ГЄГ®Г­ГґГЁГЈГ !");
 			}
 		}
-		Message("инициализация эвентов...");
+		Message("ГЁГ­ГЁГ¶ГЁГ Г«ГЁГ§Г Г¶ГЁГї ГЅГўГҐГ­ГІГ®Гў...");
 		ProxyServer.getInstance().getPluginManager().registerListener(this, this);
 		getProxy().getPluginManager().registerCommand(this, new notify());
 		
-		Message("запуск капча сервера...");
-		String[] a = null; //Да да, говнокод.
+		Message("Г§Г ГЇГіГ±ГЄ ГЄГ ГЇГ·Г  Г±ГҐГ°ГўГҐГ°Г ...");
+		String[] a = null; //Г„Г  Г¤Г , ГЈГ®ГўГ­Г®ГЄГ®Г¤.
 		Main.main(a);
 
-		Message("инициализация таймеров..");
+		Message("ГЁГ­ГЁГ¶ГЁГ Г«ГЁГ§Г Г¶ГЁГї ГІГ Г©Г¬ГҐГ°Г®Гў..");
 		ProxyServer.getInstance().getScheduler().schedule(this, new Runnable() 
 		{
             @Override
@@ -121,7 +121,7 @@ public class BungeePlugin extends Plugin implements Listener
             	{
 	            	if (connections < sensitive)
 	            	{
-	            		getProxy().broadcast("§8[§fAn§bBot§8]: §fбот атака отражена! Отключаем защиту!");
+	            		getProxy().broadcast("В§8[В§fAnВ§bBotВ§8]: В§fГЎГ®ГІ Г ГІГ ГЄГ  Г®ГІГ°Г Г¦ГҐГ­Г ! ГЋГІГЄГ«ГѕГ·Г ГҐГ¬ Г§Г Г№ГЁГІГі!");
 	            		guard = false;
 	            	}
             	}
@@ -136,7 +136,7 @@ public class BungeePlugin extends Plugin implements Listener
             	{
             		whiteList.clear();
             		blackList.clear();
-            		Message("белый список и банлист очищены!");
+            		Message("ГЎГҐГ«Г»Г© Г±ГЇГЁГ±Г®ГЄ ГЁ ГЎГ Г­Г«ГЁГ±ГІ Г®Г·ГЁГ№ГҐГ­Г»!");
             	}
             }
         }, 12, 12, TimeUnit.HOURS);
@@ -148,12 +148,12 @@ public class BungeePlugin extends Plugin implements Listener
             	if (connections < sensitive)
             	{
             		attempts.clear();
-            		Message("временный список игроков очищен!");
+            		Message("ГўГ°ГҐГ¬ГҐГ­Г­Г»Г© Г±ГЇГЁГ±Г®ГЄ ГЁГЈГ°Г®ГЄГ®Гў Г®Г·ГЁГ№ГҐГ­!");
             		System.gc();
             	}
             }
         }, 20, 20, TimeUnit.MINUTES);
-		Message("AnBot успешно инициализирован!");
+		Message("AnBot ГіГ±ГЇГҐГёГ­Г® ГЁГ­ГЁГ¶ГЁГ Г«ГЁГ§ГЁГ°Г®ГўГ Г­!");
 	}
 	
 	@Override
@@ -166,7 +166,7 @@ public class BungeePlugin extends Plugin implements Listener
 		} 
 		catch (IOException e) 
 		{
-			Message("§4ошибка сохранения конфига!");
+			Message("В§4Г®ГёГЁГЎГЄГ  Г±Г®ГµГ°Г Г­ГҐГ­ГЁГї ГЄГ®Г­ГґГЁГЈГ !");
 		}
 		Main.stopServer();
 		Message("server successfully stopped!");
@@ -175,7 +175,7 @@ public class BungeePlugin extends Plugin implements Listener
 	@SuppressWarnings("deprecation")
 	public void Message(String s)
 	{
-		getProxy().getConsole().sendMessage("§8[§fAn§bBot§8]: §f" + s);
+		getProxy().getConsole().sendMessage("В§8[В§fAnВ§bBotВ§8]: В§f" + s);
 	}
 	
 	@SuppressWarnings("deprecation")
@@ -192,7 +192,7 @@ public class BungeePlugin extends Plugin implements Listener
 			{
 				player.connect(ProxyServer.getInstance().getServerInfo(serverName));
 				whiteList.add(player.getDisplayName());
-				Message("§b"+player.getDisplayName() + "§f прошёл капчу. Вход разрешён!");
+				Message("В§b"+player.getDisplayName() + "В§f ГЇГ°Г®ГёВёГ« ГЄГ ГЇГ·Гі. Г‚ГµГ®Г¤ Г°Г Г§Г°ГҐГёВёГ­!");
 			}
 			else
 			{
@@ -205,20 +205,20 @@ public class BungeePlugin extends Plugin implements Listener
 				{
 					attempts.put(playerAddress, attempts.get(playerAddress)-1);
 				}
-				player.sendMessage("§cКапча введена не верно! Вводить нужно прямо в чат!");
-				player.sendMessage("§6У вас осталось §c" + attempts.get(playerAddress) + "§6 попыток!");
+				player.sendMessage("В§cГЉГ ГЇГ·Г  ГўГўГҐГ¤ГҐГ­Г  Г­ГҐ ГўГҐГ°Г­Г®! Г‚ГўГ®Г¤ГЁГІГј Г­ГіГ¦Г­Г® ГЇГ°ГїГ¬Г® Гў Г·Г ГІ!");
+				player.sendMessage("В§6Г“ ГўГ Г± Г®Г±ГІГ Г«Г®Г±Гј В§c" + attempts.get(playerAddress) + "В§6 ГЇГ®ГЇГ»ГІГ®ГЄ!");
 				if (attempts.get(playerAddress) < 2)
 				{
-					player.sendMessage("§cВнимание! Вы будете забенены если не введёте корректную капчу! Осталась 1 попытка!");
-					player.sendMessage("§61. Внимательно посмотрите на карту, прочитайте код который вы видите на ней.");
-					player.sendMessage("§62. Откройте клавишей T чат и введите данный код. Внимание! Без знака / и прочего, просто код!");
-					player.sendMessage("§cВнимание! Вы будете забенены если не введёте корректную капчу! Осталась 1 попытка!");
+					player.sendMessage("В§cГ‚Г­ГЁГ¬Г Г­ГЁГҐ! Г‚Г» ГЎГіГ¤ГҐГІГҐ Г§Г ГЎГҐГ­ГҐГ­Г» ГҐГ±Г«ГЁ Г­ГҐ ГўГўГҐГ¤ВёГІГҐ ГЄГ®Г°Г°ГҐГЄГІГ­ГіГѕ ГЄГ ГЇГ·Гі! ГЋГ±ГІГ Г«Г Г±Гј 1 ГЇГ®ГЇГ»ГІГЄГ !");
+					player.sendMessage("В§61. Г‚Г­ГЁГ¬Г ГІГҐГ«ГјГ­Г® ГЇГ®Г±Г¬Г®ГІГ°ГЁГІГҐ Г­Г  ГЄГ Г°ГІГі, ГЇГ°Г®Г·ГЁГІГ Г©ГІГҐ ГЄГ®Г¤ ГЄГ®ГІГ®Г°Г»Г© ГўГ» ГўГЁГ¤ГЁГІГҐ Г­Г  Г­ГҐГ©.");
+					player.sendMessage("В§62. ГЋГІГЄГ°Г®Г©ГІГҐ ГЄГ«Г ГўГЁГёГҐГ© T Г·Г ГІ ГЁ ГўГўГҐГ¤ГЁГІГҐ Г¤Г Г­Г­Г»Г© ГЄГ®Г¤. Г‚Г­ГЁГ¬Г Г­ГЁГҐ! ГЃГҐГ§ Г§Г­Г ГЄГ  / ГЁ ГЇГ°Г®Г·ГҐГЈГ®, ГЇГ°Г®Г±ГІГ® ГЄГ®Г¤!");
+					player.sendMessage("В§cГ‚Г­ГЁГ¬Г Г­ГЁГҐ! Г‚Г» ГЎГіГ¤ГҐГІГҐ Г§Г ГЎГҐГ­ГҐГ­Г» ГҐГ±Г«ГЁ Г­ГҐ ГўГўГҐГ¤ВёГІГҐ ГЄГ®Г°Г°ГҐГЄГІГ­ГіГѕ ГЄГ ГЇГ·Гі! ГЋГ±ГІГ Г«Г Г±Гј 1 ГЇГ®ГЇГ»ГІГЄГ !");
 					if (attempts.get(playerAddress) < 1)
 					{
 						blackList.add(playerAddress);
 						attempts.remove(playerAddress);
-						Message("§cIP адрес §f"+ playerAddress + "§c заблокирован!");
-						player.disconnect("§cПоздравляю! Вы забанены!");
+						Message("В§cIP Г Г¤Г°ГҐГ± В§f"+ playerAddress + "В§c Г§Г ГЎГ«Г®ГЄГЁГ°Г®ГўГ Г­!");
+						player.disconnect("В§cГЏГ®Г§Г¤Г°Г ГўГ«ГїГѕ! Г‚Г» Г§Г ГЎГ Г­ГҐГ­Г»!");
 					}
 				}
 			}
@@ -247,8 +247,8 @@ public class BungeePlugin extends Plugin implements Listener
 				{
 					blackList.add(playerAddress);
 					attempts.remove(playerAddress);
-					Message("§cIP адрес §f"+ playerAddress + "§c заблокирован!");
-					player.disconnect("§cПоздравляю! Вы забанены!");
+					Message("В§cIP Г Г¤Г°ГҐГ± В§f"+ playerAddress + "В§c Г§Г ГЎГ«Г®ГЄГЁГ°Г®ГўГ Г­!");
+					player.disconnect("В§cГЏГ®Г§Г¤Г°Г ГўГ«ГїГѕ! Г‚Г» Г§Г ГЎГ Г­ГҐГ­Г»!");
 				}
 				
 			}
@@ -259,7 +259,7 @@ public class BungeePlugin extends Plugin implements Listener
 	@EventHandler(priority = EventPriority.LOWEST)
 	public void onPlayerInitial(PreLoginEvent e)
 	{
-		//Счётчик подключений.
+		//Г‘Г·ВёГІГ·ГЁГЄ ГЇГ®Г¤ГЄГ«ГѕГ·ГҐГ­ГЁГ©.
 		connections++;
 		if (autoGuard)
 		{
@@ -268,12 +268,12 @@ public class BungeePlugin extends Plugin implements Listener
 				if (!guard)
 				{
 					guard = true;
-					getProxy().broadcast("§8[§fAn§bBot§8]: §cподозрение на бот атаку. Включаем защиту!");
+					getProxy().broadcast("В§8[В§fAnВ§bBotВ§8]: В§cГЇГ®Г¤Г®Г§Г°ГҐГ­ГЁГҐ Г­Г  ГЎГ®ГІ Г ГІГ ГЄГі. Г‚ГЄГ«ГѕГ·Г ГҐГ¬ Г§Г Г№ГЁГІГі!");
 				}
 			}
 		}
 				
-		//Проверка на бан IP адресса. 
+		//ГЏГ°Г®ГўГҐГ°ГЄГ  Г­Г  ГЎГ Г­ IP Г Г¤Г°ГҐГ±Г±Г . 
 		if (blackList.contains(e.getConnection().getAddress().getHostString())) 
 		{
 			e.setCancelReason(banMessage);
@@ -286,7 +286,7 @@ public class BungeePlugin extends Plugin implements Listener
 				ProxiedPlayer p = (ProxiedPlayer) getProxy().getPlayers().toArray()[i];
 				if (p.getAddress().getHostString().equals(e.getConnection().getAddress().getHostString()) && p.getServer().getInfo().getName().equals("ancore"))
 				{
-					e.setCancelReason("§cНельзя заходить одновременно с одного IP двум игрокам!");
+					e.setCancelReason("В§cГЌГҐГ«ГјГ§Гї Г§Г ГµГ®Г¤ГЁГІГј Г®Г¤Г­Г®ГўГ°ГҐГ¬ГҐГ­Г­Г® Г± Г®Г¤Г­Г®ГЈГ® IP Г¤ГўГіГ¬ ГЁГЈГ°Г®ГЄГ Г¬!");
 					e.setCancelled(true);
 				}
 			}
@@ -300,7 +300,7 @@ public class BungeePlugin extends Plugin implements Listener
 		if (!guard || whiteList.contains(player.getDisplayName()))
 		{
 			player.connect(ProxyServer.getInstance().getServerInfo(serverName));
-			ProxyServer.getInstance().getConsole().sendMessage("§8[§fAn§bBot§8]: §fВход для §b" + player.getDisplayName() + "§f разрешён!");
+			ProxyServer.getInstance().getConsole().sendMessage("В§8[В§fAnВ§bBotВ§8]: В§fГ‚ГµГ®Г¤ Г¤Г«Гї В§b" + player.getDisplayName() + "В§f Г°Г Г§Г°ГҐГёВёГ­!");
 		}
 	}
 }
