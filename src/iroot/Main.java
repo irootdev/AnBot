@@ -161,6 +161,8 @@ public class Main
     	final ComposedWordToImage wordToImage = new ComposedWordToImage( fontGen, bgGen, textPaster );
     	
         BufferedImage img = wordToImage.getImage(cap);
+        
+        //Костыль
         String result = "";
 	    for (int i=25; i < 128; i++)
 	    {
@@ -178,7 +180,7 @@ public class Main
 		    }
 		    result = result+t;
 	    }
-	    
+	    //Костыль №2
 	    for (int i=1; i <= 25; i++)
 	    {
 	    	String t = "";
